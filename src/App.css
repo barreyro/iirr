@@ -43,6 +43,10 @@ li span.delete-item {
 
 .error {
   color:red;
+
+}
+.success{
+  color:green;
 }
 
 span.delete-item a {
