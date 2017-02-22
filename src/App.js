@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {TodoForm, TodoList, Footer} from './components/todo';
 import {addTodo, generateId, findById, toggleTodo, updateTodo, removeTodo, filterTodos} from './lib/todoHelpers';
@@ -76,19 +75,15 @@ class App extends Component {
     const displayTodos = filterTodos(this.state.todos, this.context.route)
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Tutus</h2>
-        </div>
         <div className="Todo-App">
+          <h2 className="Todo-Title">Todo List</h2>
+          <TodoList handleToggle={this.handleToggle} todos={displayTodos} 
+          handleRemove={this.handleRemove}/>
           {this.state.errorMessage && <span className='error'>{this.state.errorMessage}</span>}
           {this.state.message&& <span className='success'>{this.state.message}</span>}
           <TodoForm handleInputChange={this.handleInputChange}
             currentTodo={this.state.currentTodo}
             handleSubmit={submitHandler}/>
-          <TodoList handleToggle={this.handleToggle} 
-          todos={displayTodos} 
-          handleRemove={this.handleRemove}/>
           <Footer />
         </div>
       </div>
